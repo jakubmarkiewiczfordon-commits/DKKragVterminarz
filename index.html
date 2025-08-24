@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plan pracy kręgu V. Domowego Kościoła (IX 2025 – VIII 2026)</title>
+  <style>
+    :root{
+      --bg:#fff; --fg:#0f172a; --muted:#64748b; --accent:#1e293b; --pill:#eef2ff; --ruch:#ecfeff; --koscielne:#fef9c3;
+      --border:#e2e8f0; --card:#f8fafc; --shadow: 0 1px 2px rgba(0,0,0,.06), 0 4px 8px rgba(0,0,0,.06);
+    }
+    html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
+    .wrap{max-width:1100px;margin:24px auto;padding:0 16px}
+
+    /* Header */
+    header{display:flex;align-items:center;gap:16px;justify-content:space-between;margin-bottom:20px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .logo{width:56px;height:56px;border-radius:16px;border:1px solid var(--border);background:var(--card);display:grid;place-items:center;color:var(--muted);font-weight:700}
+    h1{font-size:clamp(18px,3.3vw,28px);text-align:center;margin:0;flex:1}
+    .symbol{width:56px;height:56px;border-radius:16px;border:1px solid var(--border);background:var(--card);display:grid;place-items:center;color:var(--muted);font-weight:700}
+    .subtitle{color:var(--muted);font-size:14px;margin-top:6px;text-align:center}
+
+    /* Controls */
+    .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;margin:14px 0 22px}
+    .pill{border:1px solid var(--border);background:var(--pill);padding:8px 12px;border-radius:999px;font-size:13px}
+
+    /* Calendar grid */
+    .months{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+    .month{background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
+    .month h2{margin:0;padding:12px 14px;border-bottom:1px solid var(--border);font-size:16px}
+    .weekdays,.days{display:grid;grid-template-columns:repeat(7,1fr)}
+    .weekdays{padding:8px 10px;color:var(--muted);font-size:12px}
+    .weekdays span{display:block;text-align:center}
+    .days{padding:8px 10px 14px;gap:6px}
+    .day{min-height:60px;border:1px solid var(--border);border-radius:12px;padding:6px 6px 8px;background:#fff;display:flex;flex-direction:column}
+    .day.muted{opacity:.35}
+    .day-number{font-size:12px;color:var(--muted)}
+    .events{margin-top:4px;display:flex;flex-direction:column;gap:4px}
+    .tag{display:inline-block;border-radius:10px;border:1px solid var(--border);padding:2px 6px;font-size:11px}
+    .tag.koscielne{background:var(--koscielne)}
+    .tag.ruch{background:var(--ruch)}
+
+    footer{margin:26px 0;color:var(--muted);font-size:12px;text-align:center}
+    .legend{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:6px}
+    .legend .tag{border:1px dashed var(--border)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <!-- Lewy górny róg: FOSKA (symbol Ruchu Światło‑Życie). Podmień zawartość .logo na <img src="assets/foska.png" alt="FOSKA – Ruch Światło‑Życie"> -->
+      <div class="brand"><div class="logo" aria-label="FOSKA">FOSKA</div></div>
+      <div style="flex:1 1 auto;display:flex;flex-direction:column;align-items:center">
+        <h1>Plan pracy kręgu V. Domowego Kościoła</h1>
+        <div class="subtitle">Rok formacyjny: wrzesień 2025 – sierpień 2026</div>
+      </div>
+      <!-- Prawy górny róg: symbol roku formacyjnego OŻK 2025. Podmień zawartość .symbol na <img src="assets/ozk-2025.png" alt="Symbol roku OŻK 2025"> -->
+      <div class="symbol" aria-label="Symbol OŻK 2025">OŻK 2025</div>
+    </header>
+
+    <div class="controls">
+      <div class="pill">Kliknij wydarzenie, by edytować opis w kodzie (sekcja <code>events</code>).</div>
+      <div class="pill">Pon–Nd (układ PL). Święta Kościoła = żółte, Wydarzenia RŚ‑Ż = błękitne.</div>
+    </div>
+
+    <section class="months" id="months"></section>
+
+    <footer>
+      <div>Wersja minimalistyczna. Możesz śmiało zmieniać kolory i układ w &lt;style&gt;.</div>
+      <div class="legend">
+        <span class="tag koscielne">Święta/uroczystości Kościoła</span>
+        <span class="tag ruch">Wydarzenia Ruchu Światło‑Życie</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // —— USTAWIENIA ——
+    const START = { y: 2025, m: 8 }; // 0=styczeń, więc 8=wrzesień
+    const TOTAL_MONTHS = 12;         // wrzesień 2025 – sierpień 2026
+
+    // Dodaj tutaj wydarzenia. Format ISO: YYYY-MM-DD
+    // Kategoryzuj jako 'koscielne' lub 'ruch' (Ruch Światło‑Życie/DK)
+    const events = [
+      // ——— PRZYKŁADY STAŁE ———
+      { date: '2025-11-01', title: 'Wszystkich Świętych (urocz.)', type: 'koscielne' },
+      { date: '2025-12-08', title: 'Niepokalane Poczęcie NMP (urocz.)', type: 'koscielne' },
+      { date: '2025-12-25', title: 'Narodzenie Pańskie (urocz.)', type: 'koscielne' },
+      { date: '2025-12-26', title: 'Św. Szczepana (święto)', type: 'koscielne' },
+      { date: '2026-01-01', title: 'Świętej Bożej Rodzicielki Maryi (urocz.)', type: 'koscielne' },
+      { date: '2026-01-06', title: 'Objawienie Pańskie (urocz.)', type: 'koscielne' },
+      { date: '2026-06-04', title: 'Boże Ciało (urocz.)', type: 'koscielne' },
+      { date: '2026-08-15', title: 'Wniebowzięcie NMP (urocz.)', type: 'koscielne' },
+      // ——— PRZYKŁADY RŚ‑Ż (UZUPEŁNIJ z Teczki roku OŻK 2025/26) ———
+      { date: '2025-12-08', title: 'Patronalne Ruchu Światło‑Życie', type: 'ruch' },
+      { date: '2026-02-02', title: 'Dzień Światła – Krościenko (OŻK)', type: 'ruch' },
+      // Poniższe wstaw z kalendarza RŚ‑Ż (dni wspólnoty, DWDD, COM, turnusy itp.)
+      // { date: '2026-06-22', title: 'COM – Centralna Oaza Matka (Krościenko)', type: 'ruch' },
+    ];
+
+    // —— POMOCNICZE ——
+    const monthNames = ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'];
+    const weekdayNames = ['Pon','Wt','Śr','Czw','Pt','Sob','Nd']; // poniedziałek jako pierwszy
+
+    // grupuj wydarzenia po dacie
+    const eventsMap = events.reduce((acc,e)=>{(acc[e.date]??=[]).push(e);return acc;},{});
+
+    function daysInMonth(y, m){
+      return new Date(y, m+1, 0).getDate();
+    }
+
+    function firstWeekdayOffset(y, m){
+      // zwróć ile pustych pól przed 1. dniem miesiąca przy układzie Pon–Nd
+      const jsDow = new Date(y, m, 1).getDay(); // 0=Nd..6=Sob
+      const dowMonFirst = (jsDow + 6) % 7; // 0=Pon..6=Nd
+      return dowMonFirst;
+    }
+
+    function createMonth(y, m){
+      const wrap = document.createElement('article');
+      wrap.className = 'month';
+      const h = document.createElement('h2');
+      h.textContent = `${monthNames[m]} ${y}`;
+      wrap.appendChild(h);
+
+      // Weekdays header
+      const wd = document.createElement('div');
+      wd.className = 'weekdays';
+      weekdayNames.forEach(n=>{const s=document.createElement('span');s.textContent=n;wd.appendChild(s)});
+      wrap.appendChild(wd);
+
+      // Days grid
+      const grid = document.createElement('div');
+      grid.className = 'days';
+
+      const offset = firstWeekdayOffset(y, m);
+      for(let i=0;i<offset;i++){
+        const cell = document.createElement('div');
+        cell.className='day muted';
+        grid.appendChild(cell);
+      }
+
+      const dim = daysInMonth(y,m);
+      for(let d=1; d<=dim; d++){
+        const cell = document.createElement('div');
+        cell.className = 'day';
+        const dn = document.createElement('div');
+        dn.className = 'day-number';
+        dn.textContent = d;
+        cell.appendChild(dn);
+
+        const evBox = document.createElement('div');
+        evBox.className = 'events';
+
+        const iso = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        (eventsMap[iso]||[]).forEach(e=>{
+          const tag = document.createElement('span');
+          tag.className = `tag ${e.type}`;
+          tag.textContent = e.title;
+          evBox.appendChild(tag);
+        });
+
+        cell.appendChild(evBox);
+        grid.appendChild(cell);
+      }
+
+      wrap.appendChild(grid);
+      return wrap;
+    }
+
+    function renderCalendar(){
+      const host = document.getElementById('months');
+      host.innerHTML = '';
+      let y = START.y, m = START.m;
+      for(let i=0;i<TOTAL_MONTHS;i++){
+        host.appendChild(createMonth(y,m));
+        m++; if(m>11){m=0; y++;}
+      }
+    }
+
+    renderCalendar();
+  </script>
+</body>
+</html>
