@@ -3,17 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title>Plan pracy kręgu V. Domowego Kościoła</title>
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.js"></script>
+
+  <!-- FullCalendar CSS & JS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    header { display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-    header img { height: 60px; margin: 0 20px; }
-    h1 { font-size: 20px; text-align: center; }
-    #calendar { max-width: 1100px; margin: 0 auto; }
-    .fc-event.liturgia { background-color: #3b82f6; border: none; }
-    .fc-event.oaza { background-color: #22c55e; border: none; }
-    .fc-event.krag { background-color: #f97316; border: none; }
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 20px; 
+      background: #f9fafb;
+    }
+    header { 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      margin-bottom: 20px; 
+    }
+    header img { 
+      height: 60px; 
+      margin: 0 20px; 
+    }
+    h1 { 
+      font-size: 22px; 
+      text-align: center; 
+      margin: 0; 
+    }
+    #calendar { 
+      max-width: 1100px; 
+      margin: 0 auto; 
+      background: white; 
+      padding: 10px; 
+      border-radius: 12px; 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Kolory wydarzeń */
+    .liturgia { background-color: #3b82f6 !important; border: none !important; }
+    .oaza { background-color: #22c55e !important; border: none !important; }
+    .krag { background-color: #f97316 !important; border: none !important; }
   </style>
 </head>
 <body>
@@ -28,13 +56,16 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
+
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         locale: 'pl',
         firstDay: 1,
+        height: 'auto',
         validRange: { start: '2025-09-01', end: '2026-08-31' },
+
         events: [
-          // === ŚWIĘTA KOŚCIOŁA (liturgia) ===
+          // === ŚWIĘTA KOŚCIOŁA ===
           { title: 'Narodzenie NMP', start: '2025-09-08', className: 'liturgia' },
           { title: 'Wszystkich Świętych', start: '2025-11-01', className: 'liturgia' },
           { title: 'Boże Narodzenie', start: '2025-12-25', className: 'liturgia' },
@@ -48,25 +79,32 @@
           { title: 'Centralna Oaza Matka', start: '2026-06-06', end: '2026-06-08', className: 'oaza' },
           { title: 'Oazy wakacyjne 2026', start: '2026-07-01', end: '2026-07-31', className: 'oaza' },
 
-          // === WYDARZENIA KRĘGU (urodziny, imieniny, rocznice) ===
-          { title: 'Urodziny Joanna Jasińska', start: '1994-04-22', className: 'krag' },
+          // === WYDARZENIA KRĘGU ===
+          { title: 'Urodziny Joanna Jasińska', start: '2025-04-22', className: 'krag' },
           { title: 'Imieniny Bartek Jasiński', start: '2025-08-24', className: 'krag' },
-          { title: 'Rocznica ślubu Jasińscy', start: '2018-07-14', className: 'krag' },
-          { title: 'Urodziny Agnieszka Markiewicz', start: '1984-06-03', className: 'krag' },
-          { title: 'Urodziny Jakub Markiewicz', start: '1991-05-03', className: 'krag' },
-          { title: 'Rocznica ślubu Markiewiczowie', start: '2018-04-02', className: 'krag' },
-          { title: 'Urodziny Zosia Panfil', start: '1978-12-17', className: 'krag' },
-          { title: 'Urodziny Krzysztof Panfil', start: '1989-04-25', className: 'krag' },
-          { title: 'Rocznica ślubu Panfilowie', start: '2018-04-28', className: 'krag' },
-          { title: 'Imieniny Paulina Pszenni', start: '2025-06-29', className: 'krag' },
-          { title: 'Rocznica ślubu Pszennowie', start: '2016-10-15', className: 'krag' },
-          { title: 'Urodziny Paulina Starzyńska', start: '1991-11-14', className: 'krag' },
-          { title: 'Rocznica ślubu Starzyńscy', start: '2017-08-26', className: 'krag' },
-          { title: 'Urodziny Damian Wiśniewski', start: '1989-11-17', className: 'krag' },
-          { title: 'Rocznica ślubu Wiśniewscy', start: '2017-10-13', className: 'krag' },
-          { title: 'Urodziny Piotr Książkiewicz', start: '1983-02-09', className: 'krag' }
+          { title: 'Rocznica ślubu Jasińscy', start: '2025-07-14', className: 'krag' },
+
+          { title: 'Urodziny Agnieszka Markiewicz', start: '2025-06-03', className: 'krag' },
+          { title: 'Urodziny Jakub Markiewicz', start: '2025-05-03', className: 'krag' },
+          { title: 'Rocznica ślubu Markiewiczowie', start: '2025-04-02', className: 'krag' },
+
+          { title: 'Urodziny Zosia Panfil', start: '2025-12-17', className: 'krag' },
+          { title: 'Urodziny Krzysztof Panfil', start: '2026-04-25', className: 'krag' },
+          { title: 'Rocznica ślubu Panfilowie', start: '2026-04-28', className: 'krag' },
+
+          { title: 'Imieniny Paulina Pszenni', start: '2026-06-29', className: 'krag' },
+          { title: 'Rocznica ślubu Pszennowie', start: '2026-10-15', className: 'krag' },
+
+          { title: 'Urodziny Paulina Starzyńska', start: '2025-11-14', className: 'krag' },
+          { title: 'Rocznica ślubu Starzyńscy', start: '2025-08-26', className: 'krag' },
+
+          { title: 'Urodziny Damian Wiśniewski', start: '2025-11-17', className: 'krag' },
+          { title: 'Rocznica ślubu Wiśniewscy', start: '2025-10-13', className: 'krag' },
+
+          { title: 'Urodziny Piotr Książkiewicz', start: '2026-02-09', className: 'krag' }
         ]
       });
+
       calendar.render();
     });
   </script>
