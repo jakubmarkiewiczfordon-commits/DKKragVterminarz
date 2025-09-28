@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Kalendarz Kręgu V DK</title>
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -23,17 +21,22 @@
     header img {
       max-height: 80px;
     }
-    #calendar {
-      max-width: 1000px;
-      margin: 0 auto;
+    .calendar-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .liturgiczne {
-      background-color: #2196F3;
-      color: white;
+    iframe {
+      border: 0;
+      width: 800px;
+      height: 600px;
     }
-    .krag {
-      background-color: #4CAF50;
-      color: white;
+    .qr-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .qr-container img {
+      margin-top: 10px;
     }
     .back {
       display: block;
@@ -57,58 +60,19 @@
     <img src="assets/ozk-2025.png" alt="Symbol roku OŻK 2025/26">
   </header>
 
-  <div id="calendar"></div>
+  <div class="calendar-container">
+    <!-- Kalendarz Google -->
+    <iframe src="https://calendar.google.com/calendar/embed?src=f76187569f30f061b1871e5140fe2ca6740a971d9abeb45d29ad940c5c44aea5%40group.calendar.google.com&ctz=Europe%2FWarsaw"
+            frameborder="0" scrolling="no"></iframe>
+
+    <!-- QR kod -->
+    <div class="qr-container">
+      <h3>Zeskanuj, aby dodać kalendarz na telefonie</h3>
+      <img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://calendar.google.com/calendar/embed?src=f76187569f30f061b1871e5140fe2ca6740a971d9abeb45d29ad940c5c44aea5%40group.calendar.google.com&ctz=Europe%2FWarsaw" 
+           alt="QR code do kalendarza Google">
+    </div>
+  </div>
 
   <a href="index.html" class="back">Powrót</a>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var calendarEl = document.getElementById('calendar');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        locale: 'pl',
-        firstDay: 1,
-        events: [
-
-          // === ŚWIĘTA LITURGICZNE ===
-          { title: 'Uroczystość Wszystkich Świętych', start: '2025-11-01', className: 'liturgiczne' },
-          { title: 'Boże Narodzenie', start: '2025-12-25', className: 'liturgiczne' },
-          { title: 'Święto Świętej Rodziny', start: '2025-12-28', className: 'liturgiczne' },
-          { title: 'Nowy Rok – Świętej Bożej Rodzicielki', start: '2026-01-01', className: 'liturgiczne' },
-          { title: 'Objawienie Pańskie (Trzech Króli)', start: '2026-01-06', className: 'liturgiczne' },
-          { title: 'Wielkanoc', start: '2026-04-05', className: 'liturgiczne' },
-          { title: 'Poniedziałek Wielkanocny', start: '2026-04-06', className: 'liturgiczne' },
-          { title: 'Zesłanie Ducha Świętego', start: '2026-05-24', className: 'liturgiczne' },
-          { title: 'Boże Ciało', start: '2026-06-04', className: 'liturgiczne' },
-          { title: 'Wniebowzięcie NMP', start: '2026-08-15', className: 'liturgiczne' },
-
-          // === WYDARZENIA KRĘGU ===
-          { title: 'Ur. Joanny J.', start: '2025-04-22', className: 'krag' },
-          { title: 'Im. Bartka J.', start: '2025-08-24', className: 'krag' },
-          { title: 'R. śl. Jasińscy', start: '2025-07-14', className: 'krag' },
-
-          { title: 'Ur. Agnieszki M.', start: '2025-06-03', className: 'krag' },
-          { title: 'Ur. Jakuba M.', start: '2025-05-03', className: 'krag' },
-          { title: 'R. śl. Markiewiczowie', start: '2025-04-02', className: 'krag' },
-
-          { title: 'Ur. Zosi P.', start: '2025-12-17', className: 'krag' },
-          { title: 'Ur. Krzysztofa P.', start: '2026-04-25', className: 'krag' },
-          { title: 'R. śl. Panfilowie', start: '2026-04-28', className: 'krag' },
-
-          { title: 'Im. Pauliny P.', start: '2026-06-29', className: 'krag' },
-          { title: 'R. śl. Pszennowie', start: '2026-10-15', className: 'krag' },
-
-          { title: 'Ur. Pauliny S.', start: '2025-11-14', className: 'krag' },
-          { title: 'R. śl. Starzyńscy', start: '2025-08-26', className: 'krag' },
-
-          { title: 'Ur. Damiana W.', start: '2025-11-17', className: 'krag' },
-          { title: 'R. śl. Wiśniewscy', start: '2025-10-13', className: 'krag' },
-
-          { title: 'Ur. Piotra K.', start: '2026-02-09', className: 'krag' }
-        ]
-      });
-      calendar.render();
-    });
-  </script>
 </body>
 </html>
