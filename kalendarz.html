@@ -31,12 +31,22 @@
       width: 800px;
       height: 600px;
     }
-    .qr-container {
+    .link-container {
       margin-top: 20px;
       text-align: center;
     }
-    .qr-container img {
-      margin-top: 10px;
+    .link-container a {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #2196F3;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .link-container a:hover {
+      background: #1976D2;
     }
     .back {
       display: block;
@@ -62,10 +72,15 @@
 
   <div class="calendar-container">
     <!-- Osadzony kalendarz Google -->
-    <iframe src="https://calendar.google.com/calendar/ical/f76187569f30f061b1871e5140fe2ca6740a971d9abeb45d29ad940c5c44aea5%40group.calendar.google.com/private-6a63010fa13a2e4488edb553e082f6af/basic.ics"
+    <iframe src="https://calendar.google.com/calendar/embed?src=f76187569f30f061b1871e5140fe2ca6740a971d9abeb45d29ad940c5c44aea5%40group.calendar.google.com&ctz=Europe%2FWarsaw"
             frameborder="0" scrolling="no"></iframe>
 
-    
+    <!-- Przycisk do otwarcia kalendarza -->
+    <div class="link-container">
+      <a href="https://calendar.google.com/calendar/u/0?cid=Zjc2MTg3NTY5ZjMwZjA2MWIxODcxZTUxNDBmZTJjYTY3NDBhOTcxZDlhYmViNDVkMjlhZDk0MGM1YzQ0YWVhNUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">
+        ➤ Otwórz kalendarz w Google
+      </a>
+    </div>
   </div>
 
   <a href="index.html" class="back">Powrót</a>
