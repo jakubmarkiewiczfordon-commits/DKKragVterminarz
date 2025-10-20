@@ -2,36 +2,106 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plan pracy Kręgu V DK</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f5f7fa, #e6eef4);
+      color: #333;
       text-align: center;
-      padding: 50px;
     }
-    h1 {
+
+    header {
       margin-bottom: 40px;
     }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      background-color: #ddd;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      line-height: 1.3;
+    }
+
+    .btn-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 0 20px;
+    }
+
     .btn {
       display: inline-block;
-      margin: 15px;
-      padding: 15px 30px;
+      padding: 15px 35px;
       font-size: 18px;
       text-decoration: none;
       background-color: #4CAF50;
       color: white;
-      border-radius: 8px;
-      transition: background 0.3s;
+      border-radius: 10px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+      transition: background 0.3s, transform 0.2s;
     }
+
     .btn:hover {
       background-color: #45a049;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      .btn {
+        font-size: 16px;
+        padding: 12px 25px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Plan pracy Kręgu V. Domowego Kościoła</h1>
-  <a href="kalendarz.html" class="btn">Kalendarz kręgu</a>
-  <a href="modlitwa.html" class="btn">Modlitwa o beatyfikację ks. Blachnickiego</a>
-  <a href="materialy.html" class="btn">Materiały</a>
+  <header>
+    <div class="logo">
+      Logo
+      <!-- Tutaj można wstawić <img src="logo.png" alt="Logo DK"> -->
+    </div>
+    <h1>Plan pracy Kręgu V Domowego Kościoła</h1>
+  </header>
+
+  <main class="btn-container">
+    <a href="kalendarz.html" class="btn">📅 Kalendarz kręgu</a>
+    <a href="modlitwa.html" class="btn">🙏 Modlitwa o beatyfikację ks. Blachnickiego</a>
+    <a href="materialy.html" class="btn">📘 Materiały</a>
+  </main>
+
+  <footer>
+    &copy; 2025 Krąg V Domowego Kościoła
+  </footer>
 </body>
 </html>
