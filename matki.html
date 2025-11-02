@@ -1,1 +1,292 @@
-W przygotowaniu.
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Matki – Krąg V Domowego Kościoła</title>
+  <style>
+    :root{
+      --bg1: #f5f7fa;
+      --bg2: #e6eef4;
+      --card: #ffffff;
+      --accent: #4CAF50;
+      --muted: #6b6b6b;
+      --text: #222;
+      --maxw: 920px;
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:"Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    .page {
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:36px 20px 60px;
+      box-sizing:border-box;
+    }
+
+    header {
+      text-align:center;
+      margin-bottom:20px;
+    }
+    .logo img{
+      width:96px;
+      height:96px;
+      border-radius:50%;
+      object-fit:cover;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+      display:block;
+      margin:0 auto 12px;
+    }
+    h1{
+      margin:6px 0 4px;
+      font-size:28px;
+      letter-spacing:0.4px;
+    }
+    .eyebrow{
+      color:var(--muted);
+      font-size:14px;
+      margin-bottom:14px;
+    }
+
+    main.card {
+      width:100%;
+      max-width:var(--maxw);
+      background:var(--card);
+      border-radius:14px;
+      box-shadow:0 10px 30px rgba(20,30,60,0.06);
+      padding:28px 34px;
+      box-sizing:border-box;
+      line-height:1.65;
+    }
+
+    .meta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px 24px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+    .meta .item{
+      background:linear-gradient(180deg, rgba(76,175,80,0.06), rgba(76,175,80,0.02));
+      border-left:4px solid rgba(76,175,80,0.12);
+      padding:8px 12px;
+      border-radius:8px;
+      font-size:14px;
+      color:var(--muted);
+      min-width:180px;
+    }
+
+    h2.section {
+      color: #2e7d32;
+      font-size:20px;
+      margin:18px 0 10px;
+    }
+
+    p {
+      margin:10px 0;
+      font-size:16px;
+      color:var(--text);
+    }
+
+    .lead {
+      font-weight:600;
+    }
+
+    .list {
+      margin:10px 0 18px 0;
+      padding-left:18px;
+    }
+    .list li {
+      margin:8px 0;
+    }
+
+    .prayer {
+      background:#fbfff9;
+      border-left:4px solid rgba(76,175,80,0.14);
+      padding:14px 16px;
+      margin:18px 0;
+      border-radius:8px;
+      color:#1f2d16;
+      white-space:pre-wrap;
+    }
+
+    .em {
+      color:var(--muted);
+      font-style:italic;
+      font-size:14px;
+    }
+
+    .small {
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    blockquote {
+      margin:14px 0;
+      padding:12px 16px;
+      border-left:3px solid rgba(0,0,0,0.06);
+      background:linear-gradient(180deg, rgba(0,0,0,0.01), rgba(0,0,0,0.00));
+      border-radius:8px;
+      font-style:italic;
+      color:#2f2f2f;
+    }
+
+    .actions {
+      text-align:center;
+      margin-top:22px;
+    }
+
+    .btn {
+      display:inline-block;
+      background:var(--accent);
+      color:#fff;
+      text-decoration:none;
+      padding:10px 20px;
+      border-radius:10px;
+      box-shadow:0 6px 18px rgba(76,175,80,0.18);
+      transition:transform .15s ease, box-shadow .15s ease;
+      font-weight:600;
+    }
+    .btn:hover{ transform:translateY(-3px); box-shadow:0 10px 22px rgba(76,175,80,0.24); }
+
+    footer {
+      margin-top:22px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* responsive */
+    @media (max-width:640px){
+      main.card{ padding:20px; border-radius:12px; }
+      .meta{ flex-direction:column; gap:10px; }
+      .meta .item{ min-width:unset; width:100%; }
+      h1{ font-size:22px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">
+        <!-- Podmień src na swój plik logo, np. ../obraz/logo.png -->
+        <img src="../obraz/logo.png" alt="Logo Kręgu V Domowego Kościoła">
+      </div>
+      <h1>MATKI</h1>
+      <div class="eyebrow">CZUWANIE MODLITEWNE — KRĄG V. DOMOWEGO KOŚCIOŁA</div>
+    </header>
+
+    <main class="card" role="main" aria-labelledby="main-title">
+      <h2 id="main-title" class="section">BÓG NASZYCH DZIECI</h2>
+
+      <div class="meta" aria-hidden="false">
+        <div class="item"><strong>Data:</strong> 03.11.2025 r. poniedziałek, godz. 21:00 – 21:45</div>
+        <div class="item"><strong>Miejsce:</strong> Kaplica parafialna</div>
+        <div class="item"><strong>Forma:</strong> Modlitwa różańcowa przed Najświętszym Sakramentem</div>
+      </div>
+
+      <p class="lead"><strong>Temat:</strong> Modlitwa o wiarę dla naszych dzieci</p>
+
+      <h3 class="section">Program czuwania</h3>
+
+      <ol>
+        <li>
+          <strong>Wystawienie Najświętszego Sakramentu</strong><br>
+          <span class="em">„Niechaj będzie pochwalony”</span><br>
+          Kapłan wystawia Najświętszy Sakrament. Wspólnota w ciszy wchodzi w obecność Chrystusa Eucharystycznego.
+        </li>
+
+        <li style="margin-top:14px;">
+          <strong>Pieśń na wejście</strong><br>
+          <span class="em">„Dobra Matko i Królowo”</span>
+        </li>
+
+        <li style="margin-top:14px;">
+          <strong>Wprowadzenie</strong><br>
+          <p>
+            Przychodzimy dziś przed Jezusa Eucharystycznego, aby modlić się o dar wiary dla naszych dzieci. Każdy rodzic pragnie, by jego dziecko było szczęśliwe – a prawdziwe szczęście rodzi się ze spotkania z Bogiem. Wpatrując się w Najświętszy Sakrament, powierzmy nasze dzieci Jego miłości i opiece Maryi, Matki Kościoła. Niech ten różaniec stanie się modlitwą nadziei, zaufania i zawierzenia.
+          </p>
+          <p class="small">Można włączyć do modlitwy dzieci po imieniu...</p>
+          <p><strong>Prosimy o wiarę dla:</strong> Piotra, Gabriela, Leona, Jana, Krystynę, Anielę, Helenę, Jadwigę, Karola, Zofię, Urszulę, Ignacego, Cypriana, Lilianę, Barbarę, Tomasza, Ignacego, Karola, Tomasza – wszystkich naszych chrześniaków.</p>
+        </li>
+
+        <li style="margin-top:14px;">
+          <strong>Różaniec – tajemnice radosne</strong>
+
+          <div style="margin-top:10px;">
+            <strong>• I Tajemnica – Zwiastowanie Najświętszej Maryi Pannie</strong>
+            <blockquote>
+„Oto poczniesz i porodzisz Syna, któremu nadasz imię Jezus.” (Łk 1,31)<br><br>
+Maryja przyjęła Boże słowo z wiarą, choć nie rozumiała wszystkiego. Uwierzyła, że Bóg ma plan większy niż Jej własne wyobrażenia. W tej tajemnicy prosimy, by nasze dzieci umiały zaufać Bogu nawet wtedy, gdy nie wszystko jest jasne. Niech w ich sercach nie zabraknie odwagi do powiedzenia Bogu: „niech mi się stanie”.<br><br>
+Panie, wzbudź w naszych dzieciach pragnienie życia z Tobą. Niech ich wiara będzie prosta, ufna i prawdziwa.
+            </blockquote>
+
+            <strong>• II Tajemnica – Nawiedzenie świętej Elżbiety</strong>
+            <blockquote>
+„Błogosławiona jesteś, któraś uwierzyła, że spełnią się słowa powiedziane Ci od Pana.” (Łk 1,45)<br><br>
+Maryja, niosąc Jezusa, idzie z pośpiechem, by służyć. Tam, gdzie przychodzi Ona – przychodzi radość i Duch Święty. Prośmy, by nasze dzieci spotykały ludzi niosących Boga – świadków dobra, miłości i wiary. I by same stawały się dla innych znakiem obecności Chrystusa.<br><br>
+Maryjo, naucz nasze dzieci radości służby. Niech ich serca będą otwarte na drugiego człowieka.
+            </blockquote>
+
+            <strong>• III Tajemnica – Narodzenie Pana Jezusa</strong>
+            <blockquote>
+„Porodziła swego pierworodnego Syna, owinęła Go w pieluszki i położyła w żłobie.” (Łk 2,7)<br><br>
+Bóg przychodzi do nas jako Dziecko – pokorny, bezbronny. W Betlejem nie było miejsca w gospodzie, ale znalazło się w sercu Maryi. Prośmy, by serca naszych dzieci zawsze były otwarte na Jezusa, by nigdy nie zabrakło w nich miejsca dla Boga.<br><br>
+Jezu, błogosław naszym dzieciom. Niech ich życie będzie pełne pokoju i prostoty Twojego żłóbka.
+            </blockquote>
+
+            <strong>• IV Tajemnica – Ofiarowanie Pana Jezusa w świątyni</strong>
+            <blockquote>
+„Moje oczy ujrzały Twoje zbawienie, któreś przygotował wobec wszystkich narodów.” (Łk 2,30–31)<br><br>
+Maryja i Józef przynoszą Dzieciątko do świątyni, powierzając Je Bogu. To obraz każdego rodzica, który wie, że dziecko jest darem – nie własnością. Prośmy, byśmy umieli powierzać nasze dzieci Panu w każdej chwili życia, wierząc, że On troszczy się o nie najlepiej.<br><br>
+Panie, przyjmij nasze dzieci jako swoje. Prowadź je przez życie światłem Twojego Słowa.
+            </blockquote>
+
+            <strong>• V Tajemnica – Odnalezienie Pana Jezusa w świątyni</strong>
+            <blockquote>
+„Czemuście Mnie szukali? Czy nie wiedzieliście, że powinienem być w tym, co należy do mego Ojca?” (Łk 2,49)<br><br>
+Maryja i Józef z bólem szukają Jezusa – i odnajdują Go w świątyni. Każdy rodzic zna ten ból, gdy dziecko gubi się duchowo, gdy traci sens wiary. Ta tajemnica niesie nadzieję: Jezus pozwala się odnaleźć. Prośmy, by nasze dzieci, nawet jeśli zagubią się w świecie, zawsze wracały do Boga.<br><br>
+Maryjo, Matko Zagubionych, prowadź nasze dzieci do Jezusa. Daj nam cierpliwość i wiarę, że Twoje Serce zawsze odnajduje tych, którzy się oddalili.
+            </blockquote>
+          </div>
+        </li>
+
+      </ol>
+
+      <div class="prayer" role="note" aria-label="Modlitwa za wstawiennictwem ks. Franciszka Blachnickiego">
+        5. Modlitwa za wstawiennictwem ks. Franciszka Blachnickiego (ok. 1 minuta)
+
+        Boże, Ojcze Wszechmogący, dziękujemy Ci za Twojego kapłana Sługę Bożego Franciszka, którego w niezwykły sposób obdarzyłeś łaską wiary konsekwentnej, tak iż swoje życie oddał niepodzielnie na Twoją służbę.
+        Dziękujemy Ci za to, że pozwoliłeś mu gorąco miłować Twój Kościół i zrozumieć, że najgłębszą zasadą jego żywotności i płodności jest oblubieńcze oddanie siebie w miłości Twojemu Synowi, na wzór Niepokalanej, Matki Kościoła.
+        Dziękujemy Ci również za to, że przez tego kapłana wzbudziłeś na polskiej ziemi Ruch Światło-Życie, który pragnie wychowywać swoich uczestników do posiadania siebie w dawaniu siebie i w ten sposób przyczyniać się do wzrostu żywych wspólnot Kościoła.
+        Bądź uwielbiony, Boże, w Słudze Bożym księdzu Franciszku, w jego życiu i dziele, i racz wsławić swoje Imię, udzielając mi przez jego wstawiennictwo łaski uzdrowienia Łukasza, o którą najpokorniej proszę. Amen.
+      </div>
+
+      <h3 class="section">Dalszy porządek</h3>
+      <ul class="list">
+        <li>6. Modlitwa w ciszy</li>
+        <li>7. Błogosławieństwo Najświętszym Sakramentem</li>
+        <li>Pieśń na błogosławieństwo: <em>Przed tak wielkim Sakramentem</em></li>
+        <li>8. Pieśń na zakończenie: <em>„Pokorna służebnico Pana”</em></li>
+      </ul>
+
+      <div class="actions">
+        <a class="btn" href="../index.html" title="Powrót do strony głównej">⬅ Powrót do strony głównej</a>
+      </div>
+    </main>
+
+    <footer>
+      &copy; 2025 Krąg V Domowego Kościoła
+    </footer>
+  </div>
+</body>
+</html>
+
