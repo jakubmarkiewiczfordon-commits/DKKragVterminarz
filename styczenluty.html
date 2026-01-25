@@ -50,7 +50,7 @@
 // konfiguracja: długość wiersza, pozycja żółtego pola, poprawna odpowiedź
 const rows = [
   {len:3, y:1, ans:"PAN"},          // P
-  {len:5, y:4, ans:"OBLOK"},       // O
+  {len:5, y:4, ans:"OBŁOK"},       // O
   {len:10,y:2, ans:"UWIELBIONE"},  // W
   {len:7, y:3, ans:"PARUZJA"},     // T
   {len:9,y:3, ans:"KRÓLESTWO"},// Ó
@@ -77,7 +77,7 @@ rows.forEach((r, i) => {
   if (r.len === 0) {
     const td = document.createElement('td');
     td.colSpan = 3;
-    td.textContent = "(spacja)";
+    td.textContent = "()";
     tr.appendChild(td);
     table.appendChild(tr);
     return;
