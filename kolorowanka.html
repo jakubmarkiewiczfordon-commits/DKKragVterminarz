@@ -7,15 +7,15 @@
 
 <style>
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Georgia", serif;
     text-align: center;
-    background-color: #f4efe6;
+    background-color: #f3eee6;
     margin: 0;
     padding: 20px;
 }
 
 h1 {
-    color: #5a3b1e;
+    color: #5c3a1e;
 }
 
 .palette {
@@ -23,69 +23,104 @@ h1 {
 }
 
 .color {
-    width: 35px;
-    height: 35px;
+    width: 34px;
+    height: 34px;
     display: inline-block;
-    margin: 5px;
+    margin: 4px;
     border-radius: 6px;
     cursor: pointer;
     border: 2px solid #333;
 }
 
+button {
+    padding: 10px 18px;
+    margin: 10px;
+    background-color: #6e4b2a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: #4d321c;
+}
+
 svg {
-    max-width: 500px;
+    max-width: 700px;
     width: 100%;
     height: auto;
-    cursor: pointer;
 }
 
 .paintable {
     fill: white;
-    stroke: #5a3b1e;
-    stroke-width: 2;
+    stroke: #4d2f18;
+    stroke-width: 1.8;
+    cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Kolorowanka – Duch Święty</h1>
-<p>Wybierz kolor i kliknij fragment obrazka.</p>
+<h1>Duch Święty – Kolorowanka</h1>
+<p>Wybierz kolor i klikaj elementy obrazu.</p>
 
 <div class="palette">
     <div class="color" style="background:#ffffff" onclick="selectColor('#ffffff')"></div>
-    <div class="color" style="background:#f4d03f" onclick="selectColor('#f4d03f')"></div>
+    <div class="color" style="background:#f6e27a" onclick="selectColor('#f6e27a')"></div>
+    <div class="color" style="background:#f4c542" onclick="selectColor('#f4c542')"></div>
     <div class="color" style="background:#e67e22" onclick="selectColor('#e67e22')"></div>
-    <div class="color" style="background:#e74c3c" onclick="selectColor('#e74c3c')"></div>
+    <div class="color" style="background:#d35400" onclick="selectColor('#d35400')"></div>
+    <div class="color" style="background:#c0392b" onclick="selectColor('#c0392b')"></div>
+    <div class="color" style="background:#9b59b6" onclick="selectColor('#9b59b6')"></div>
     <div class="color" style="background:#3498db" onclick="selectColor('#3498db')"></div>
     <div class="color" style="background:#2ecc71" onclick="selectColor('#2ecc71')"></div>
-    <div class="color" style="background:#9b59b6" onclick="selectColor('#9b59b6')"></div>
     <div class="color" style="background:#000000" onclick="selectColor('#000000')"></div>
 </div>
 
-<svg viewBox="0 0 400 400">
+<button onclick="clearImage()">Wyczyść obraz</button>
+<button onclick="savePNG()">Zapisz jako PNG</button>
 
-    <!-- Głowa -->
-    <circle class="paintable" cx="200" cy="140" r="30"/>
+<br><br>
 
-    <!-- Korpus -->
-    <ellipse class="paintable" cx="200" cy="220" rx="50" ry="70"/>
+<svg id="svgImage" viewBox="0 0 600 700">
 
-    <!-- Lewe skrzydło -->
-    <path class="paintable" d="M150 180 Q70 120 60 200 Q100 220 150 210 Z"/>
+<!-- Aureola -->
+<circle class="paintable" cx="300" cy="250" r="180"/>
 
-    <!-- Prawe skrzydło -->
-    <path class="paintable" d="M250 180 Q330 120 340 200 Q300 220 250 210 Z"/>
+<!-- Promienie -->
+<g>
+    <polygon class="paintable" points="300,20 320,150 280,150"/>
+    <polygon class="paintable" points="550,250 450,270 450,230"/>
+    <polygon class="paintable" points="300,480 320,350 280,350"/>
+    <polygon class="paintable" points="50,250 150,230 150,270"/>
+</g>
 
-    <!-- Ogon -->
-    <path class="paintable" d="M170 280 L200 330 L230 280 Z"/>
+<!-- Głowa -->
+<circle class="paintable" cx="300" cy="240" r="40"/>
 
-    <!-- Promienie -->
-    <line class="paintable" x1="200" y1="40" x2="200" y2="90"/>
-    <line class="paintable" x1="160" y1="60" x2="180" y2="100"/>
-    <line class="paintable" x1="240" y1="60" x2="220" y2="100"/>
-    <line class="paintable" x1="120" y1="100" x2="160" y2="130"/>
-    <line class="paintable" x1="280" y1="100" x2="240" y2="130"/>
+<!-- Tułów -->
+<ellipse class="paintable" cx="300" cy="330" rx="65" ry="100"/>
+
+<!-- Skrzydło lewe (segmenty) -->
+<path class="paintable" d="M235 300 Q120 200 90 320 Q160 350 240 340 Z"/>
+<path class="paintable" d="M230 340 Q130 260 110 360 Q170 380 230 370 Z"/>
+<path class="paintable" d="M225 380 Q150 320 130 400 Q180 420 220 410 Z"/>
+
+<!-- Skrzydło prawe (segmenty) -->
+<path class="paintable" d="M365 300 Q480 200 510 320 Q440 350 360 340 Z"/>
+<path class="paintable" d="M370 340 Q470 260 490 360 Q430 380 370 370 Z"/>
+<path class="paintable" d="M375 380 Q450 320 470 400 Q420 420 380 410 Z"/>
+
+<!-- Ogon -->
+<polygon class="paintable" points="260,430 300,550 340,430"/>
+<polygon class="paintable" points="280,430 300,600 320,430"/>
+
+<!-- Płomienie -->
+<path class="paintable" d="M250 520 Q270 480 290 520 Q270 540 250 520 Z"/>
+<path class="paintable" d="M310 520 Q330 480 350 520 Q330 540 310 520 Z"/>
 
 </svg>
 
@@ -101,6 +136,41 @@ document.querySelectorAll('.paintable').forEach(el => {
         this.style.fill = currentColor;
     });
 });
+
+function clearImage() {
+    document.querySelectorAll('.paintable').forEach(el => {
+        el.style.fill = "white";
+    });
+}
+
+function savePNG() {
+    const svg = document.getElementById("svgImage");
+    const serializer = new XMLSerializer();
+    const source = serializer.serializeToString(svg);
+
+    const img = new Image();
+    const svgBlob = new Blob([source], {type: "image/svg+xml;charset=utf-8"});
+    const url = URL.createObjectURL(svgBlob);
+
+    img.onload = function() {
+        const canvas = document.createElement("canvas");
+        canvas.width = svg.viewBox.baseVal.width;
+        canvas.height = svg.viewBox.baseVal.height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+
+        const pngFile = canvas.toDataURL("image/png");
+
+        const downloadLink = document.createElement("a");
+        downloadLink.download = "duch_swiety_kolorowanka.png";
+        downloadLink.href = pngFile;
+        downloadLink.click();
+
+        URL.revokeObjectURL(url);
+    };
+
+    img.src = url;
+}
 </script>
 
 </body>
