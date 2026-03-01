@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kolorowanka – Duch Święty</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4efe6;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #5a3b1e;
+}
+
+.palette {
+    margin: 20px 0;
+}
+
+.color {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid #333;
+}
+
+svg {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.paintable {
+    fill: white;
+    stroke: #5a3b1e;
+    stroke-width: 2;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Kolorowanka – Duch Święty</h1>
+<p>Wybierz kolor i kliknij fragment obrazka.</p>
+
+<div class="palette">
+    <div class="color" style="background:#ffffff" onclick="selectColor('#ffffff')"></div>
+    <div class="color" style="background:#f4d03f" onclick="selectColor('#f4d03f')"></div>
+    <div class="color" style="background:#e67e22" onclick="selectColor('#e67e22')"></div>
+    <div class="color" style="background:#e74c3c" onclick="selectColor('#e74c3c')"></div>
+    <div class="color" style="background:#3498db" onclick="selectColor('#3498db')"></div>
+    <div class="color" style="background:#2ecc71" onclick="selectColor('#2ecc71')"></div>
+    <div class="color" style="background:#9b59b6" onclick="selectColor('#9b59b6')"></div>
+    <div class="color" style="background:#000000" onclick="selectColor('#000000')"></div>
+</div>
+
+<svg viewBox="0 0 400 400">
+
+    <!-- Głowa -->
+    <circle class="paintable" cx="200" cy="140" r="30"/>
+
+    <!-- Korpus -->
+    <ellipse class="paintable" cx="200" cy="220" rx="50" ry="70"/>
+
+    <!-- Lewe skrzydło -->
+    <path class="paintable" d="M150 180 Q70 120 60 200 Q100 220 150 210 Z"/>
+
+    <!-- Prawe skrzydło -->
+    <path class="paintable" d="M250 180 Q330 120 340 200 Q300 220 250 210 Z"/>
+
+    <!-- Ogon -->
+    <path class="paintable" d="M170 280 L200 330 L230 280 Z"/>
+
+    <!-- Promienie -->
+    <line class="paintable" x1="200" y1="40" x2="200" y2="90"/>
+    <line class="paintable" x1="160" y1="60" x2="180" y2="100"/>
+    <line class="paintable" x1="240" y1="60" x2="220" y2="100"/>
+    <line class="paintable" x1="120" y1="100" x2="160" y2="130"/>
+    <line class="paintable" x1="280" y1="100" x2="240" y2="130"/>
+
+</svg>
+
+<script>
+let currentColor = "#ffffff";
+
+function selectColor(color) {
+    currentColor = color;
+}
+
+document.querySelectorAll('.paintable').forEach(el => {
+    el.addEventListener('click', function() {
+        this.style.fill = currentColor;
+    });
+});
+</script>
+
+</body>
+</html>
