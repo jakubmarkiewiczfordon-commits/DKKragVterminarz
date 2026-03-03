@@ -3,78 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kolorowanka – Duch Święty (Witraż)</title>
+<title>Witraż – Duch Święty</title>
 
 <style>
-body {
-    font-family: Georgia, serif;
-    background: #f3eee6;
-    text-align: center;
-    margin: 0;
-    padding: 20px;
+body{
+    margin:0;
+    padding:20px;
+    background:#f4efe6;
+    font-family:Georgia, serif;
+    text-align:center;
 }
 
-h1 {
-    color: #5c3a1e;
+h1{
+    color:#4b2e18;
 }
 
-.palette {
-    margin: 20px 0;
+.palette{
+    margin:20px 0;
 }
 
-.color {
-    width: 32px;
-    height: 32px;
-    display: inline-block;
-    margin: 4px;
-    border-radius: 5px;
-    cursor: pointer;
-    border: 2px solid #333;
+.color{
+    width:28px;
+    height:28px;
+    display:inline-block;
+    margin:4px;
+    border-radius:4px;
+    cursor:pointer;
+    border:2px solid #333;
 }
 
-button {
-    padding: 10px 18px;
-    margin: 8px;
-    background: #6e4b2a;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+button{
+    padding:10px 18px;
+    margin:8px;
+    background:#5a3a1e;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
 }
 
-button:hover {
-    background: #4d321c;
+button:hover{
+    background:#3e2714;
 }
 
-svg {
-    max-width: 900px;
-    width: 100%;
-    height: auto;
+svg{
+    max-width:900px;
+    width:100%;
 }
 
-.paintable {
-    fill: white;
-    stroke: black;
-    stroke-width: 2;
-    cursor: pointer;
+.paintable{
+    fill:white;
+    stroke:#1a1a1a;
+    stroke-width:3;
+    cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Duch Święty – Kolorowanka Witrażowa</h1>
-<p>Wybierz kolor i klikaj poszczególne segmenty.</p>
+<h1>Witrażowa Kolorowanka – Duch Święty</h1>
 
 <div class="palette">
-<div class="color" style="background:#ffffff" onclick="setColor('#ffffff')"></div>
-<div class="color" style="background:#f7dc6f" onclick="setColor('#f7dc6f')"></div>
+<!-- złota gama -->
+<div class="color" style="background:#fffdf5" onclick="setColor('#fffdf5')"></div>
+<div class="color" style="background:#f7e6a3" onclick="setColor('#f7e6a3')"></div>
 <div class="color" style="background:#f4c542" onclick="setColor('#f4c542')"></div>
-<div class="color" style="background:#e67e22" onclick="setColor('#e67e22')"></div>
-<div class="color" style="background:#c0392b" onclick="setColor('#c0392b')"></div>
-<div class="color" style="background:#3498db" onclick="setColor('#3498db')"></div>
+<div class="color" style="background:#e0a106" onclick="setColor('#e0a106')"></div>
+<!-- czerwienie -->
+<div class="color" style="background:#f5b7b1" onclick="setColor('#f5b7b1')"></div>
+<div class="color" style="background:#e74c3c" onclick="setColor('#e74c3c')"></div>
+<div class="color" style="background:#922b21" onclick="setColor('#922b21')"></div>
+<!-- błękity -->
+<div class="color" style="background:#d6eaf8" onclick="setColor('#d6eaf8')"></div>
+<div class="color" style="background:#5dade2" onclick="setColor('#5dade2')"></div>
+<div class="color" style="background:#154360" onclick="setColor('#154360')"></div>
+<!-- zielenie -->
+<div class="color" style="background:#d5f5e3" onclick="setColor('#d5f5e3')"></div>
 <div class="color" style="background:#2ecc71" onclick="setColor('#2ecc71')"></div>
+<div class="color" style="background:#196f3d" onclick="setColor('#196f3d')"></div>
+<!-- fiolety -->
+<div class="color" style="background:#e8daef" onclick="setColor('#e8daef')"></div>
 <div class="color" style="background:#9b59b6" onclick="setColor('#9b59b6')"></div>
+<div class="color" style="background:#4a235a" onclick="setColor('#4a235a')"></div>
+<!-- neutralne -->
+<div class="color" style="background:#ffffff" onclick="setColor('#ffffff')"></div>
+<div class="color" style="background:#cccccc" onclick="setColor('#cccccc')"></div>
 <div class="color" style="background:#000000" onclick="setColor('#000000')"></div>
 </div>
 
@@ -85,108 +99,135 @@ svg {
 
 <svg id="svgImage" viewBox="0 0 800 800">
 
-<!-- TŁO WITRAŻOWE (siatka) -->
-<g id="backgroundGrid">
-    <!-- generowane ręcznie segmenty -->
-    <!-- 5x5 prostokątów -->
-    <!-- wiersz 1 -->
-    <rect class="paintable" x="0" y="0" width="160" height="160"/>
-    <rect class="paintable" x="160" y="0" width="160" height="160"/>
-    <rect class="paintable" x="320" y="0" width="160" height="160"/>
-    <rect class="paintable" x="480" y="0" width="160" height="160"/>
-    <rect class="paintable" x="640" y="0" width="160" height="160"/>
-    <!-- wiersz 2 -->
-    <rect class="paintable" x="0" y="160" width="160" height="160"/>
-    <rect class="paintable" x="640" y="160" width="160" height="160"/>
-    <!-- wiersz 3 -->
-    <rect class="paintable" x="0" y="640" width="160" height="160"/>
-    <rect class="paintable" x="160" y="640" width="160" height="160"/>
-    <rect class="paintable" x="320" y="640" width="160" height="160"/>
-    <rect class="paintable" x="480" y="640" width="160" height="160"/>
-    <rect class="paintable" x="640" y="640" width="160" height="160"/>
+<!-- KWADRATOWE TŁO – siatka witrażowa -->
+<g>
+<!-- 8x8 szkiełek -->
+<script type="application/ecmascript"><![CDATA[
+for(let i=0;i<8;i++){
+ for(let j=0;j<8;j++){
+   let rect=document.createElementNS("http://www.w3.org/2000/svg","rect");
+   rect.setAttribute("x",i*100);
+   rect.setAttribute("y",j*100);
+   rect.setAttribute("width",100);
+   rect.setAttribute("height",100);
+   rect.setAttribute("class","paintable");
+   document.currentScript.parentNode.appendChild(rect);
+ }
+}
+]]></script>
 </g>
 
-<!-- OKRĄG WITRAŻA -->
+<!-- DUŻE KOŁO -->
 <circle class="paintable" cx="400" cy="400" r="300"/>
 
-<!-- PROMIENIE (24 segmenty) -->
+<!-- RAMKA KOŁA – segmenty -->
 <g>
-    <!-- ręcznie podzielone trójkątne promienie -->
-    <polygon class="paintable" points="400,100 430,220 370,220"/>
-    <polygon class="paintable" points="400,100 470,230 430,220"/>
-    <polygon class="paintable" points="400,100 330,230 370,220"/>
-    <!-- (dla przejrzystości ograniczona liczba – ale duże pola) -->
+<script type="application/ecmascript"><![CDATA[
+for(let i=0;i<24;i++){
+ let angle1=(i*15)*Math.PI/180;
+ let angle2=((i+1)*15)*Math.PI/180;
+ let x1=400+300*Math.cos(angle1);
+ let y1=400+300*Math.sin(angle1);
+ let x2=400+300*Math.cos(angle2);
+ let y2=400+300*Math.sin(angle2);
+ let path=document.createElementNS("http://www.w3.org/2000/svg","path");
+ path.setAttribute("d",
+  `M400,400 L${x1},${y1} A300,300 0 0,1 ${x2},${y2} Z`);
+ path.setAttribute("class","paintable");
+ document.currentScript.parentNode.appendChild(path);
+}
+]]></script>
 </g>
 
-<!-- AUREOLA WEWNĘTRZNA -->
-<circle class="paintable" cx="400" cy="400" r="200"/>
+<!-- WEWNĘTRZNA AUREOLA -->
+<circle class="paintable" cx="400" cy="400" r="180"/>
 
-<!-- DUCH ŚWIĘTY -->
+<!-- PROMIENIE TŁA -->
+<g>
+<script type="application/ecmascript"><![CDATA[
+for(let i=0;i<24;i++){
+ let angle1=(i*15)*Math.PI/180;
+ let angle2=((i+1)*15)*Math.PI/180;
+ let x1=400+180*Math.cos(angle1);
+ let y1=400+180*Math.sin(angle1);
+ let x2=400+180*Math.cos(angle2);
+ let y2=400+180*Math.sin(angle2);
+ let x3=400+300*Math.cos(angle2);
+ let y3=400+300*Math.sin(angle2);
+ let x4=400+300*Math.cos(angle1);
+ let y4=400+300*Math.sin(angle1);
+ let path=document.createElementNS("http://www.w3.org/2000/svg","polygon");
+ path.setAttribute("points",
+  `${x1},${y1} ${x2},${y2} ${x3},${y3} ${x4},${y4}`);
+ path.setAttribute("class","paintable");
+ document.currentScript.parentNode.appendChild(path);
+}
+]]></script>
+</g>
 
-<!-- Głowa -->
-<circle class="paintable" cx="400" cy="350" r="40"/>
+<!-- GOŁĘBICA -->
 
-<!-- Tułów -->
-<ellipse class="paintable" cx="400" cy="450" rx="70" ry="110"/>
+<!-- tułów -->
+<ellipse class="paintable" cx="400" cy="430" rx="70" ry="110"/>
 
-<!-- Skrzydło lewe – podział na segmenty -->
-<path class="paintable" d="M330 420 Q200 300 160 420 Q250 480 330 460 Z"/>
-<path class="paintable" d="M320 460 Q210 350 180 460 Q260 510 320 500 Z"/>
-<path class="paintable" d="M310 500 Q230 420 210 520 Q270 550 300 540 Z"/>
+<!-- głowa -->
+<circle class="paintable" cx="400" cy="350" r="35"/>
 
-<!-- Skrzydło prawe -->
-<path class="paintable" d="M470 420 Q600 300 640 420 Q550 480 470 460 Z"/>
-<path class="paintable" d="M480 460 Q590 350 620 460 Q540 510 480 500 Z"/>
-<path class="paintable" d="M490 500 Q570 420 590 520 Q530 550 500 540 Z"/>
+<!-- skrzydła – segmentowane -->
+<path class="paintable" d="M330 400 Q200 320 160 420 Q250 470 330 450 Z"/>
+<path class="paintable" d="M470 400 Q600 320 640 420 Q550 470 470 450 Z"/>
 
-<!-- Ogon -->
-<polygon class="paintable" points="360,560 400,680 440,560"/>
-<polygon class="paintable" points="380,560 400,720 420,560"/>
+<!-- pióra -->
+<path class="paintable" d="M310 450 Q240 390 220 460 Q280 480 310 470 Z"/>
+<path class="paintable" d="M490 450 Q560 390 580 460 Q520 480 490 470 Z"/>
+
+<!-- ogon -->
+<polygon class="paintable" points="360,520 400,650 440,520"/>
+<polygon class="paintable" points="380,520 400,690 420,520"/>
 
 </svg>
 
 <script>
-let currentColor = "#ffffff";
+let currentColor="#ffffff";
 
 function setColor(color){
-    currentColor = color;
+ currentColor=color;
 }
 
-document.querySelectorAll('.paintable').forEach(el=>{
-    el.addEventListener('click', function(){
-        this.style.fill = currentColor;
-    });
+document.addEventListener("click",function(e){
+ if(e.target.classList.contains("paintable")){
+  e.target.style.fill=currentColor;
+ }
 });
 
 function clearImage(){
-    document.querySelectorAll('.paintable').forEach(el=>{
-        el.style.fill = "white";
-    });
+ document.querySelectorAll(".paintable").forEach(el=>{
+  el.style.fill="white";
+ });
 }
 
 function savePNG(){
-    const svg = document.getElementById("svgImage");
-    const serializer = new XMLSerializer();
-    const source = serializer.serializeToString(svg);
-    const img = new Image();
-    const svgBlob = new Blob([source], {type:"image/svg+xml;charset=utf-8"});
-    const url = URL.createObjectURL(svgBlob);
+ const svg=document.getElementById("svgImage");
+ const serializer=new XMLSerializer();
+ const source=serializer.serializeToString(svg);
+ const img=new Image();
+ const blob=new Blob([source],{type:"image/svg+xml"});
+ const url=URL.createObjectURL(blob);
 
-    img.onload = function(){
-        const canvas = document.createElement("canvas");
-        canvas.width = 800;
-        canvas.height = 800;
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(img,0,0);
-        const png = canvas.toDataURL("image/png");
-
-        const link = document.createElement("a");
-        link.download = "duch_swiety_witraz.png";
-        link.href = png;
-        link.click();
-        URL.revokeObjectURL(url);
-    };
-    img.src = url;
+ img.onload=function(){
+  const canvas=document.createElement("canvas");
+  canvas.width=800;
+  canvas.height=800;
+  const ctx=canvas.getContext("2d");
+  ctx.drawImage(img,0,0);
+  const png=canvas.toDataURL("image/png");
+  const link=document.createElement("a");
+  link.download="witraz_duch_swiety.png";
+  link.href=png;
+  link.click();
+  URL.revokeObjectURL(url);
+ };
+ img.src=url;
 }
 </script>
 
