@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wykreślanka</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #e6eef4);
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(30, 1fr);
+    gap: 2px;
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.cell {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px 0;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cell.selected {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🔎 Wykreślanka</h1>
+<p>Znajdź słowa: ZMARTWYCHWSTANIE, KOŚCIÓŁ, MATKA, BLACHNICKI</p>
+
+<div id="grid" class="grid"></div>
+
+<div class="buttons">
+    <button onclick="checkWords()">Sprawdź</button>
+    <button onclick="resetSelection()">Reset</button>
+</div>
+
+<script>
+const rows = 10;
+const cols = 30;
+
+// siatka
+let grid = Array.from({ length: rows }, () =>
+    Array.from({ length: cols }, () => randomLetter())
+);
+
+// słowa do wstawienia
+const words = [
+    "ZMARTWYCHWSTANIE",
+    "KOSCIOL",
+    "MATKA",
+    "BLACHNICKI"
+];
+
+// wstaw słowa poziomo
+function placeWords() {
+    words.forEach(word => {
+        let row = Math.floor(Math.random() * rows);
+        let col = Math.floor(Math.random() * (cols - word.length));
+
+        for (let i = 0; i < word.length; i++) {
+            grid[row][col + i] = word[i];
+        }
+    });
+}
+
+function randomLetter() {
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    return letters[Math.floor(Math.random() * letters.length)];
+}
+
+placeWords();
+
+// renderowanie
+const gridElement = document.getElementById("grid");
+
+grid.forEach((row, r) => {
+    row.forEach((letter, c) => {
+        const div = document.createElement("div");
+        div.classList.add("cell");
+        div.textContent = letter;
+
+        div.addEventListener("click", () => {
+            div.classList.toggle("selected");
+        });
+
+        gridElement.appendChild(div);
+    });
+});
+
+// sprawdzanie
+function checkWords() {
+    const selected = Array.from(document.querySelectorAll(".cell.selected"))
+        .map(el => el.textContent)
+        .join("");
+
+    let found = words.filter(word => selected.includes(word));
+
+    alert("Znalezione: " + (found.length ? found.join(", ") : "brak"));
+}
+
+// reset
+function resetSelection() {
+    document.querySelectorAll(".cell").forEach(el => {
+        el.classList.remove("selected");
+    });
+}
+</script>
+
+</body>
+</html>
