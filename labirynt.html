@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Labirynt – Droga do Ducha Świętego</title>
+
+<style>
+
+:root{
+    --bg:#f4eadc;
+    --brown:#5c3a27;
+    --light:#e7d4bd;
+    --accent:#8a674f;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    font-family:Georgia, serif;
+    color:var(--brown);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    min-height:100vh;
+}
+
+h1{
+    margin-top:20px;
+    margin-bottom:10px;
+    text-align:center;
+    font-size:2.4rem;
+}
+
+.subtitle{
+    text-align:center;
+    margin-bottom:20px;
+    color:var(--accent);
+}
+
+#gameWrapper{
+    position:relative;
+    margin-bottom:20px;
+}
+
+canvas{
+    background:#fffaf3;
+    border:8px solid var(--brown);
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    max-width:95vw;
+    height:auto;
+}
+
+.controls{
+    margin-bottom:30px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+button{
+    background:var(--brown);
+    color:white;
+    border:none;
+    padding:12px 18px;
+    border-radius:10px;
+    font-size:1rem;
+    cursor:pointer;
+    transition:.2s;
+}
+
+button:hover{
+    background:#704a34;
+}
+
+.info{
+    max-width:800px;
+    text-align:center;
+    padding:0 20px 30px;
+    color:#6d5240;
+}
+
+@media(max-width:700px){
+
+    h1{
+        font-size:1.8rem;
+    }
+
+    .subtitle{
+        font-size:.95rem;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<h1>Labirynt – Droga do Ducha Świętego</h1>
+
+<div class="subtitle">
+    Rozpocznij przy chrzcielnicy i odnajdź drogę do Ducha Świętego.
+</div>
+
+<div id="gameWrapper">
+    <canvas id="maze" width="900" height="900"></canvas>
+</div>
+
+<div class="controls">
+    <button onclick="resetPlayer()">Nowa próba</button>
+</div>
+
+<div class="info">
+    Sterowanie: strzałki klawiatury lub WASD.<br>
+    Dotrzyj od chrzcielnicy do gołębicy.
+</div>
+
+<script>
+
+const canvas = document.getElementById("maze");
+const ctx = canvas.getContext("2d");
+
+const rows = 30;
+const cols = 30;
+const size = 30;
+
+let maze = [];
+
+class Cell{
+    constructor(x,y){
+        this.x = x;
+        this.y = y;
+        this.walls = [true,true,true,true];
+        this.visited = false;
+    }
+
+    draw(){
+
+        const px = this.x * size;
+        const py = this.y * size;
+
+        ctx.strokeStyle = "#5c3a27";
+        ctx.lineWidth = 3;
+
+        if(this.walls[0]){
+            ctx.beginPath();
+            ctx.moveTo(px,py);
+            ctx.lineTo(px+size,py);
+            ctx.stroke();
+        }
+
+        if(this.walls[1]){
+            ctx.beginPath();
+            ctx.moveTo(px+size,py);
+            ctx.lineTo(px+size,py+size);
+            ctx.stroke();
+        }
+
+        if(this.walls[2]){
+            ctx.beginPath();
+            ctx.moveTo(px+size,py+size);
+            ctx.lineTo(px,py+size);
+            ctx.stroke();
+        }
+
+        if(this.walls[3]){
+            ctx.beginPath();
+            ctx.moveTo(px,py+size);
+            ctx.lineTo(px,py);
+            ctx.stroke();
+        }
+    }
+}
+
+for(let y=0;y<rows;y++){
+    let row=[];
+    for(let x=0;x<cols;x++){
+        row.push(new Cell(x,y));
+    }
+    maze.push(row);
+}
+
+function getNeighbors(cell){
+
+    const neighbors=[];
+
+    const dirs=[
+        [0,-1],
+        [1,0],
+        [0,1],
+        [-1,0]
+    ];
+
+    dirs.forEach((d,i)=>{
+        const nx=cell.x+d[0];
+        const ny=cell.y+d[1];
+
+        if(nx>=0 && ny>=0 && nx<cols && ny<rows){
+            const neighbor=maze[ny][nx];
+            if(!neighbor.visited){
+                neighbors.push(neighbor);
+            }
+        }
+    });
+
+    return neighbors;
+}
+
+function removeWalls(a,b){
+
+    const dx = a.x - b.x;
+    const dy = a.y - b.y;
+
+    if(dx===1){
+        a.walls[3]=false;
+        b.walls[1]=false;
+    }else if(dx===-1){
+        a.walls[1]=false;
+        b.walls[3]=false;
+    }
+
+    if(dy===1){
+        a.walls[0]=false;
+        b.walls[2]=false;
+    }else if(dy===-1){
+        a.walls[2]=false;
+        b.walls[0]=false;
+    }
+}
+
+function generateMaze(){
+
+    let stack=[];
+
+    let current=maze[0][0];
+    current.visited=true;
+
+    while(true){
+
+        const neighbors=getNeighbors(current);
+
+        if(neighbors.length>0){
+
+            const next=neighbors[Math.floor(Math.random()*neighbors.length)];
+
+            next.visited=true;
+
+            stack.push(current);
+
+            removeWalls(current,next);
+
+            current=next;
+
+        }else if(stack.length>0){
+
+            current=stack.pop();
+
+        }else{
+            break;
+        }
+    }
+}
+
+generateMaze();
+
+const player = {
+    x:0,
+    y:0
+};
+
+function drawBaptism(){
+
+    ctx.fillStyle="#8bb6d6";
+
+    ctx.beginPath();
+    ctx.arc(15,15,10,0,Math.PI*2);
+    ctx.fill();
+
+    ctx.strokeStyle="#5c3a27";
+    ctx.lineWidth=2;
+    ctx.stroke();
+}
+
+function drawDove(){
+
+    const x = cols*size - 15;
+    const y = rows*size - 15;
+
+    ctx.fillStyle="#d9c9a8";
+
+    ctx.beginPath();
+    ctx.ellipse(x,y,12,8,0,0,Math.PI*2);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(x-8,y);
+    ctx.lineTo(x-22,y-10);
+    ctx.lineTo(x-14,y+2);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(x+8,y);
+    ctx.lineTo(x+22,y-10);
+    ctx.lineTo(x+14,y+2);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(x,y+6);
+    ctx.lineTo(x,y+18);
+    ctx.strokeStyle="#5c3a27";
+    ctx.lineWidth=2;
+    ctx.stroke();
+}
+
+function drawPlayer(){
+
+    const px = player.x*size + size/2;
+    const py = player.y*size + size/2;
+
+    ctx.fillStyle="#5c3a27";
+
+    ctx.beginPath();
+    ctx.arc(px,py,7,0,Math.PI*2);
+    ctx.fill();
+}
+
+function draw(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    maze.forEach(row=>{
+        row.forEach(cell=>{
+            cell.draw();
+        });
+    });
+
+    drawBaptism();
+    drawDove();
+    drawPlayer();
+}
+
+function move(dx,dy){
+
+    const cell = maze[player.y][player.x];
+
+    if(dx===1 && !cell.walls[1]){
+        player.x++;
+    }
+
+    if(dx===-1 && !cell.walls[3]){
+        player.x--;
+    }
+
+    if(dy===1 && !cell.walls[2]){
+        player.y++;
+    }
+
+    if(dy===-1 && !cell.walls[0]){
+        player.y--;
+    }
+
+    draw();
+
+    if(player.x===cols-1 && player.y===rows-1){
+
+        setTimeout(()=>{
+            alert("Dotarłeś do Ducha Świętego!");
+        },100);
+    }
+}
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="ArrowUp" || e.key==="w"){
+        move(0,-1);
+    }
+
+    if(e.key==="ArrowDown" || e.key==="s"){
+        move(0,1);
+    }
+
+    if(e.key==="ArrowLeft" || e.key==="a"){
+        move(-1,0);
+    }
+
+    if(e.key==="ArrowRight" || e.key==="d"){
+        move(1,0);
+    }
+});
+
+function resetPlayer(){
+    player.x=0;
+    player.y=0;
+    draw();
+}
+
+draw();
+
+</script>
+
+</body>
+</html>
