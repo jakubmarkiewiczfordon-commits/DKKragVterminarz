@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Znajdź różnice</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#f3eadb;
+    --text:#5f3b22;
+    --accent:#7a4d2f;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Cormorant Garamond', serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:30px 15px;
+}
+
+.container{
+    width:100%;
+    max-width:1000px;
+    text-align:center;
+}
+
+.logo{
+    width:min(280px, 60vw);
+    height:auto;
+    display:block;
+    margin:0 auto 20px auto;
+}
+
+h1{
+    font-size:clamp(2.2rem, 6vw, 4rem);
+    font-weight:600;
+    margin-bottom:35px;
+    color:var(--text);
+}
+
+.image-wrapper{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+
+.image-wrapper img{
+    max-width:100%;
+    width:auto;
+    height:auto;
+    border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.12);
+}
+
+@media (max-width:768px){
+
+    body{
+        padding:20px 10px;
+    }
+
+    h1{
+        margin-bottom:25px;
+    }
+
+    .logo{
+        width:200px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Logo kręgu -->
+    <img src="logo.png" alt="Logo Kręgu" class="logo">
+
+    <h1>Znajdź różnice</h1>
+
+    <div class="image-wrapper">
+        <!-- Tutaj wstaw swój obraz -->
+        <img src="10roznic.png" alt="Znajdź 10 różnic">
+    </div>
+
+</div>
+
+</body>
+</html>
