@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotkanie podsumowujące</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#f4eadc;
+    --paper:#faf5ee;
+    --brown:#5c3b24;
+    --border:#d8c7b3;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    background:var(--bg);
+    color:var(--brown);
+    font-family:'Cormorant Garamond', serif;
+    min-height:100vh;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:30px 20px 60px;
+    text-align:center;
+}
+
+.logo{
+    width:220px;
+    max-width:70%;
+    display:block;
+    margin:0 auto 25px auto;
+}
+
+h1{
+    font-size:clamp(2.6rem,6vw,4.5rem);
+    font-weight:600;
+    margin-bottom:30px;
+}
+
+.ankieta-box{
+    background:var(--paper);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:25px;
+    margin:0 auto 40px;
+    max-width:700px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+
+.ankieta-box p{
+    font-size:1.7rem;
+    margin-bottom:20px;
+}
+
+.button{
+    display:inline-block;
+    background:var(--brown);
+    color:white;
+    text-decoration:none;
+    padding:14px 32px;
+    border-radius:10px;
+    font-size:1.4rem;
+    transition:.2s;
+}
+
+.button:hover{
+    opacity:.9;
+}
+
+.plan{
+    background:var(--paper);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:35px;
+    text-align:left;
+    max-width:700px;
+    margin:auto;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+
+.plan-title{
+    text-align:center;
+    font-size:2.2rem;
+    margin-bottom:25px;
+    font-weight:600;
+}
+
+.start{
+    text-align:center;
+    font-size:1.8rem;
+    margin-bottom:25px;
+    font-weight:600;
+}
+
+.plan ol{
+    padding-left:35px;
+}
+
+.plan li{
+    font-size:1.6rem;
+    margin-bottom:15px;
+    line-height:1.4;
+}
+
+@media(max-width:768px){
+
+    .logo{
+        width:180px;
+    }
+
+    .ankieta-box p{
+        font-size:1.4rem;
+    }
+
+    .button{
+        width:100%;
+        max-width:320px;
+        text-align:center;
+    }
+
+    .plan{
+        padding:25px;
+    }
+
+    .plan li{
+        font-size:1.35rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Logo kręgu -->
+    <img src="logo.png" alt="Logo Kręgu" class="logo">
+
+    <h1>Spotkanie podsumowujące</h1>
+
+    <div class="ankieta-box">
+        <p>Prosimy o uzupełnienie ankiety</p>
+
+        <a href="https://dkkv.pl/assets/podsumowanie.html"
+           class="button"
+           target="_blank">
+           Otwórz ankietę
+        </a>
+    </div>
+
+    <div class="plan">
+
+        <div class="plan-title">
+            Plan spotkania
+        </div>
+
+        <div class="start">
+            Zaczynamy o g. 10:00
+        </div>
+
+        <ol>
+            <li>Dzielenie się życiem i modlitwą;</li>
+            <li>Podsumowanie pracy;</li>
+            <li>Wybory nowej pary animatorskiej;</li>
+            <li>Agapa.</li>
+        </ol>
+
+    </div>
+
+</div>
+
+</body>
+</html>
