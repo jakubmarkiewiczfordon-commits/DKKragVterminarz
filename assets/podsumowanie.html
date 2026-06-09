@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Podsumowanie pracy kręgu - kwestionariusz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#f4eadc;
+    --paper:#faf5ee;
+    --brown:#5c3b24;
+    --border:#d8c7b3;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    font-family:'Cormorant Garamond', serif;
+    color:var(--brown);
+    line-height:1.5;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:25px 15px 50px;
+}
+
+.logo{
+    display:block;
+    margin:auto;
+    width:220px;
+    max-width:80%;
+}
+
+h1{
+    text-align:center;
+    font-size:3rem;
+    margin:20px 0 40px;
+    font-weight:600;
+}
+
+.question{
+    background:var(--paper);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:25px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.question label{
+    display:block;
+    font-size:1.45rem;
+    font-weight:600;
+    margin-bottom:12px;
+}
+
+textarea{
+    width:100%;
+    min-height:150px;
+    resize:vertical;
+    padding:12px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    font-size:1rem;
+    font-family:Arial,sans-serif;
+}
+
+.counter{
+    text-align:right;
+    margin-top:5px;
+    color:#777;
+    font-size:0.9rem;
+}
+
+.submit-area{
+    text-align:center;
+    margin-top:40px;
+}
+
+button{
+    background:var(--brown);
+    color:white;
+    border:none;
+    border-radius:10px;
+    padding:15px 40px;
+    font-size:1.4rem;
+    font-family:'Cormorant Garamond', serif;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+.info{
+    text-align:center;
+    margin-bottom:30px;
+    font-size:1.3rem;
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:2.2rem;
+    }
+
+    .question label{
+        font-size:1.2rem;
+    }
+
+    button{
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="logo.png" class="logo" alt="Logo Kręgu">
+
+<h1>Podsumowanie pracy kręgu - kwestionariusz</h1>
+
+<p class="info">
+Prosimy o szczere odpowiedzi. Maksymalna długość odpowiedzi: 300 znaków.
+</p>
+
+<form action="send.php" method="post">
+
+<div class="question">
+<label>1. Przygotowanie spotkań. Czy pary, które przygotowywały spotkania, robiły to starannie, przez modlitwę i omówienie ich przebiegu? Czy współpracowały z moderatorem?</label>
+<textarea maxlength="300" name="p1" required></textarea>
+<div class="counter">0 / 300</div>
+</div>
+
+<div class="question">
+<label>2. Modlitwa. Jaka była nasza modlitwa podczas spotkań miesięcznych? Ile czasu na nią przeznaczaliśmy, jaki był jej przebieg? Czy wszyscy brali w niej udział? Czy przejmowaliśmy się intencjami podawanymi w czasie modlitwy?</label>
+<textarea maxlength="300" name="p2" required></textarea>
+<div class="counter">0 / 300</div>
+</div>
+
+<div class="question">
+<label>3. Sprawozdania. Czy szczerze dzieliliśmy się naszymi osiągnięciami, trudnościami, porażkami w dziedzinie zobowiązań? Czy pomagaliśmy sobie modlitwą i dzieleniem się w kręgu?</label>
+<textarea maxlength="300" name="p3" required></textarea>
+<div class="counter">0 / 300</div>
+</div>
+
+<div class="question">
+<label>4. Dzielenie się życiem. Czy podczas dzielenia się poświęcaliśmy dosyć czasu na słuchanie siebie nawzajem? Czy wszyscy mieli możność zabrania głosu?</label>
+<textarea maxlength="300" name="p4" required></textarea>
+<div class="counter">0 / 300</div>
+</div>
+
+<div class="question">
+<label>5. Temat studyjny. Czy przygotowywaliśmy się do tego tematu w ciągu miesiąca? Jakie były nasze dyskusje? Czy omawiany wspólnie temat rzutował na nasze życie?</label>
+<textarea maxlength="300" name="p5" required></textarea>
+<div class="counter">0 / 300</div>
+</div>
+
+<div class="question">
+<label>6. Nasz udział w życiu Ruchu i Kościoła. Czy czytaliśmy sumiennie materiały otrzymane z Ruchu? Czy uczestniczyliśmy w rekolekcjach, dniach wspólnoty i diakoniach?</label>
+<textarea maxlength="300" name="p6" required></textarea>
+<div class="counter">0 / 300</div>
+</div>
+
+<div class="submit-area">
+<button type="submit">Wyślij</button>
+</div>
+
+</form>
+
+</div>
+
+<script>
+
+document.querySelectorAll("textarea").forEach(area=>{
+
+const counter=area.parentElement.querySelector(".counter");
+
+area.addEventListener("input",()=>{
+
+counter.textContent=area.value.length+" / 300";
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
