@@ -36,17 +36,20 @@ body{
     text-align:center;
 }
 
-.logo{
-    width:220px;
-    max-width:70%;
+.hero-image{
     display:block;
-    margin:0 auto 25px auto;
+    width:100%;
+    max-width:700px;
+    height:auto;
+    margin:0 auto 30px auto;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
 }
 
-h1{
-    font-size:clamp(2.6rem,6vw,4.5rem);
-    font-weight:600;
-    margin-bottom:30px;
+@media(max-width:768px){
+    .hero-image{
+        max-width:100%;
+    }
 }
 
 .ankieta-box{
@@ -146,7 +149,9 @@ h1{
 
 <div class="container">
 
-    <img src="assets/spotkanie_podsumowujace.png" alt="Logo Kręgu" class="logo">
+   <img src="assets/spotkanie_podsumowujace.png"
+     alt="Spotkanie podsumowujące"
+     class="hero-image">
 
     <h1>Spotkanie podsumowujące</h1>
 
