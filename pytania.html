@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Podsumowanie pracy kręgu - kwestionariusz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#f4eadc;
+    --paper:#faf5ee;
+    --brown:#5c3b24;
+    --border:#d8c7b3;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg);
+    font-family:'Cormorant Garamond', serif;
+    color:var(--brown);
+    line-height:1.6;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:30px 20px 60px;
+}
+
+.logo{
+    display:block;
+    margin:0 auto 25px;
+    width:220px;
+    max-width:70%;
+}
+
+h1{
+    text-align:center;
+    font-size:clamp(2.2rem,5vw,4rem);
+    margin-bottom:35px;
+}
+
+.question{
+    background:var(--paper);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
+
+.question label{
+    display:block;
+    font-size:1.35rem;
+    font-weight:600;
+    margin-bottom:12px;
+}
+
+textarea{
+    width:100%;
+    min-height:140px;
+    resize:vertical;
+    padding:15px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    font-size:1rem;
+    font-family:Arial,sans-serif;
+}
+
+.info{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:1.2rem;
+}
+
+.btn-wrap{
+    text-align:center;
+    margin-top:35px;
+}
+
+button{
+    background:var(--brown);
+    color:white;
+    border:none;
+    padding:16px 45px;
+    border-radius:10px;
+    font-size:1.3rem;
+    cursor:pointer;
+    transition:.2s;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+@media(max-width:768px){
+
+    .logo{
+        width:170px;
+    }
+
+    .question label{
+        font-size:1.15rem;
+    }
+
+    textarea{
+        min-height:120px;
+    }
+
+    button{
+        width:100%;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <img src="assets/spotkanie_podsumowujące.png" alt="Logo Kręgu" class="logo">
+
+    <h1>Podsumowanie pracy kręgu - kwestionariusz</h1>
+
+    <div class="info">
+        Prosimy o szczere odpowiedzi. Każde pole przyjmuje do 300 znaków.
+    </div>
+
+    <form action="https://formsubmit.co/kubek36@wp.pl" method="POST">
+
+        <!-- Konfiguracja FormSubmit -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="Podsumowanie pracy kręgu">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://dkkv.pl/dziekujemy.html">
+
+        <div class="question">
+            <label>Przedstaw się w pierwszej odpowiedzi. 1. Przygotowanie spotkań. Czy pary, które przygotowywały spotkania, robiły to starannie, przez modlitwę i omówienie ich przebiegu? Czy współpracowały z moderatorem?</label>
+            <textarea maxlength="300" name="Pytanie 1"></textarea>
+        </div>
+
+        <div class="question">
+            <label>2. Modlitwa. Jaka była nasza modlitwa podczas spotkań miesięcznych? Ile czasu na nią przeznaczaliśmy, jaki był jej przebieg? Czy wszyscy brali w niej udział? Czy przejmowaliśmy się intencjami podawanymi w czasie modlitwy?</label>
+            <textarea maxlength="300" name="Pytanie 2"></textarea>
+        </div>
+
+        <div class="question">
+            <label>3. Sprawozdania. Czy szczerze dzieliliśmy się naszymi osiągnięciami, trudnościami, porażkami w dziedzinie zobowiązań? Czy pomagaliśmy sobie w małżeństwie w wypełnianiu zobowiązań? Czy pomagaliśmy sobie modlitwą i dzieleniem się w kręgu? Czy modliliśmy się za siebie nawzajem?</label>
+            <textarea maxlength="300" name="Pytanie 3"></textarea>
+        </div>
+
+        <div class="question">
+            <label>4. Dzielenie się życiem. Czy podczas dzielenia się poświęcaliśmy dosyć czasu na słuchanie siebie nawzajem? Czy wszyscy mieli możność zabrania głosu? Czy to dzielenie się było przygotowane w poszczególnych małżeństwach?</label>
+            <textarea maxlength="300" name="Pytanie 4"></textarea>
+        </div>
+
+        <div class="question">
+            <label>5. Temat studyjny. Czy przygotowywaliśmy się do tego tematu w ciągu miesiąca? Jakie były nasze dyskusje? Czy omawiany wspólnie temat rzutował na nasze życie?</label>
+            <textarea maxlength="300" name="Pytanie 5"></textarea>
+        </div>
+
+        <div class="question">
+            <label>6. Nasz udział w życiu Ruchu, Kościoła. Czy czytaliśmy sumiennie materiały otrzymane z Ruchu? Czy braliśmy udział w odbywających się rekolekcjach w ciągu roku? Ile osób z kręgu wzięło w nich udział w ostatnim roku? Jakie było nasze oddziaływanie na zewnątrz, pomoc dla Ruchu, udział w dniach wspólnoty? Jak wyglądała nasza pomoc w diakoniach Ruchu i w parafii? Jakie dawaliśmy świadectwo wobec tych, z którymi się spotykamy?</label>
+            <textarea maxlength="300" name="Pytanie 6"></textarea>
+        </div>
+
+        <div class="btn-wrap">
+            <button type="submit">Wyślij</button>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>
