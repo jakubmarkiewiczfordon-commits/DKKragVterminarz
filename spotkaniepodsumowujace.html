@@ -36,20 +36,21 @@ body{
     text-align:center;
 }
 
+/* Główny obraz nagłówka */
 .hero-image{
     display:block;
     width:100%;
-    max-width:700px;
+    max-width:750px;
     height:auto;
     margin:0 auto 30px auto;
-    border-radius:12px;
+    border-radius:14px;
     box-shadow:0 4px 15px rgba(0,0,0,0.08);
 }
 
-@media(max-width:768px){
-    .hero-image{
-        max-width:100%;
-    }
+h1{
+    font-size:clamp(2.6rem,6vw,4.5rem);
+    font-weight:600;
+    margin-bottom:30px;
 }
 
 .ankieta-box{
@@ -119,8 +120,9 @@ body{
 
 @media(max-width:768px){
 
-    .logo{
-        width:180px;
+    .hero-image{
+        max-width:100%;
+        margin-bottom:20px;
     }
 
     .ankieta-box p{
@@ -149,9 +151,10 @@ body{
 
 <div class="container">
 
-   <img src="assets/spotkanie_podsumowujace.png"
-     alt="Spotkanie podsumowujące"
-     class="hero-image">
+    <!-- Obraz nagłówka -->
+    <img src="assets/spotkanie_podsumowujace.png"
+         alt="Spotkanie podsumowujące"
+         class="hero-image">
 
     <h1>Spotkanie podsumowujące</h1>
 
